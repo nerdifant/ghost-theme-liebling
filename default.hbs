@@ -93,6 +93,7 @@
     </script>
   </head>
   <body class="{{body_class}}">
+    {{#if @member}}
     {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
     {{{body}}}
 
@@ -117,5 +118,9 @@
 
     {{!-- Ghost outputs important scripts and data with this tag --}}
     {{ghost_foot}}
+    {{else}}
+      <script type="text/javascript"> if(window.location.href.indexOf("signin") < 0) { window.location.href = "#/portal/signin"; }</script>
+      <div style="width: 100%; position: absolute; top: 32%; text-align: center;" >{{t "This site is private. Please"}} <a href="#/portal/signin">{{t "sign in"}}.</div>
+    {{/if}}
   </body>
 </html>
